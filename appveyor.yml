@@ -4,7 +4,10 @@ image: Visual Studio 2017
 
 build:
   verbosity: normal
-  
+
+init:
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
 install:
   - ps: Start-FileDownload https://www.libsdl.org/release/SDL2-devel-2.0.8-VC.zip -FileName sdl2.zip
   - ps: Expand-Archive sdl2.zip -DestinationPath sdl2
